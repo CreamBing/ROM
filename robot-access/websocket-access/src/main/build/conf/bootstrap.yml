@@ -1,0 +1,22 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: websocket-access
+  cloud:
+    consul:
+      host: 192.168.14.120
+      config:
+        format: YAML
+        enabled: true
+        data-key: configuration
+        prefix: config
+        default-context: ${spring.application.name}
+      port: 8500
+      discovery:
+        enabled: true
+        service-name: websocket-access
+        health-check-path: /actuator/health
+        health-check-interval: 10s
+        health-check-url: http://192.168.14.32:${server.port}${spring.cloud.consul.discovery.health-check-path}
+        tags: dev
