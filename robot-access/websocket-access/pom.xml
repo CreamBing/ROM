@@ -45,6 +45,13 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
+		<!--kafka-->
+		<dependency>
+			<groupId>com.netposa</groupId>
+			<artifactId>rom-kafka</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
         <!--start spring web controller endpoint.ServiceRegistryEndpoint需要-->
         <!--健康检查应该需要-->
         <dependency>
@@ -59,6 +66,13 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+		<!-- configuration-processor -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
 
     </dependencies>
 

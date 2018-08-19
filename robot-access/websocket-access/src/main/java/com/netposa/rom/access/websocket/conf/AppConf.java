@@ -26,11 +26,14 @@ public class AppConf {
     private int socketPort;
     private String socketClientEvent;
 
+    private String kafkaSocketCmdTopic;
+
     @PostConstruct
     private void initConf() {
         LOGGER.info("\napp 远程配置加载完成:" +
                         "\n\t\tsocketPort:{}" +
-                        "\n\t\tsocketClientEvent:{}"
-                , socketPort, socketClientEvent);
+                        "\n\t\tsocketClientEvent:{}"+
+                        "\n\t\tkafkaSocketCmdTopic:{}"
+                , socketPort, socketClientEvent,kafkaSocketCmdTopic);
     }
 }

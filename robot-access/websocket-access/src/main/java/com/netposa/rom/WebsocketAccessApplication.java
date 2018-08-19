@@ -16,7 +16,8 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-@ComponentScan(basePackages = {"com.netposa.rom.access.websocket","com.netposa.rom.common.redis"})
+@ComponentScan(basePackages = {"com.netposa.rom.access.websocket","com.netposa.rom.common.redis"
+,"com.netposa.rom.common.kafka"})
 @EnableConfigurationProperties
 public class WebsocketAccessApplication {
     public static void main(String[] args) {
