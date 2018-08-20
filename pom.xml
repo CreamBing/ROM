@@ -15,6 +15,10 @@
         <module>robot-access</module>
         <module>rom-common</module>
         <module>cmd-module</module>
+        <module>rom-controller</module>
+        <module>rom-dao</module>
+        <module>rom-service</module>
+        <module>rom-model</module>
     </modules>
 
     <properties>
