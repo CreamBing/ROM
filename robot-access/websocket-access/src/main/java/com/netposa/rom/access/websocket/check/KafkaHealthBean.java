@@ -21,6 +21,7 @@ public class KafkaHealthBean {
 
     private String status;
     private Details details;
+    private Boolean isConnected;
 
     @Data
     static class Details{

@@ -11,8 +11,10 @@ import org.apache.kafka.common.MetricName;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
+import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
@@ -20,8 +22,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.Map;
 import java.util.Set;
-
-import static org.bouncycastle.asn1.x500.style.RFC4519Style.c;
 
 /**
  * Class Name:CustomHealthIndicator
@@ -39,17 +39,22 @@ public class KafkaHealthIndicator implements HealthIndicator {
     @Autowired
     KafkaTemplate kafkaTemplate;
 
+    @Qualifier("consumerFactory")
     @Autowired
     ConsumerFactory consumer;
 
     @Autowired
     ProducerFactory producerFactory;
 
+    @Qualifier("kafkaListenerContainerFactory")
+    @Autowired
+    ConcurrentKafkaListenerContainerFactory concurrentKafkaListenerContainerFactory;
+
 
     @Override
     public Health health() {
         KafkaHealthBean kafkaHealthBean = getKafkaConsumerHealth();
-        if (kafkaHealthBean == null) {
+        if (kafkaHealthBean == null||!kafkaHealthBean.getIsConnected()) {
             return Health.down().build();
         } else {
             return Health.up().withDetail("version", kafkaHealthBean.getDetails().getVersion())
@@ -71,12 +76,23 @@ public class KafkaHealthIndicator implements HealthIndicator {
             details.setConnectionCount(connectionCount);
             details.setLastHeartbeatSeconds(lastHeartbeatSeconds);
             kafkaHealthBean.setDetails(details);
-            kafkaHealthBean.setStatus("up");
+            kafkaHealthBean.setIsConnected(isKafkaAble());
             return kafkaHealthBean;
         } catch (Exception e) {
             LOGGER.error("kafka消费者健康检查获取异常:[{}]", e.getMessage());
             return null;
         }
+    }
+
+    private boolean isKafkaAble() {
+        boolean isConnected = true;
+        try {
+            consumer.createConsumer().listTopics();
+        } catch (Exception e) {
+            LOGGER.error("kafka获取topic异常,说明kafka服务端异常,原因:[{}]", e.getMessage());
+            isConnected = false;
+        }
+        return isConnected;
     }
 
 }

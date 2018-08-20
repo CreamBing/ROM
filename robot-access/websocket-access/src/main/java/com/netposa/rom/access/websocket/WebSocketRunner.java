@@ -38,12 +38,16 @@ public class WebSocketRunner implements CommandLineRunner {
     @Autowired
     private AppConf appConfig;
 
+    @Autowired
+    private WebSocketOperation webSocketOperation;
+
     @Override
     public void run(String... strings) {
         try {
             Configuration config = new Configuration();
             config.setPort(appConfig.getSocketPort());
             final SocketIOServer server = new SocketIOServer(config);
+            webSocketOperation.init(server);
             //TODO 后期改为注解方式实现
             server.addConnectListener(socketIOClient -> {
                 String robotCoce = getRobotCode(socketIOClient);
@@ -56,8 +60,8 @@ public class WebSocketRunner implements CommandLineRunner {
                 socketIOClient.joinRoom(robotCoce);
                 //设置socket连接方式的总数列表
                 redisUtil.hSet(RedisConstants.SOCKET_CLIENT_LIST,robotCoce,System.currentTimeMillis());
-                //将当前socket序列化到redis的online列表中
-                redisUtil.hSet(RedisConstants.SOCKET_CLIENT_ONLINE_LIST,robotCoce,socketIOClient);
+                //将当前socket序列化到redis的online列表中 TODO 这是无法被序列化的
+//                redisUtil.hSet(RedisConstants.SOCKET_CLIENT_ONLINE_LIST,robotCoce,socketIOClient);
                 //删除离线列表中的记录，如果有的话
                 redisUtil.hDel(RedisConstants.SOCKET_CLIENT_OFFLINE_LIST,robotCoce);
                 Collection<SocketIOClient> clientCollection = server.getAllClients();

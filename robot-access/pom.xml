@@ -60,7 +60,7 @@
             <artifactId>spring-cloud-starter-consul-all</artifactId>
         </dependency>
 
-        <!--start 动态获取配置-->
+        <!--start 动态获取配置以及健康检查 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
