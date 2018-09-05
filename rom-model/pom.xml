@@ -18,6 +18,7 @@
 
     <modules>
         <module>rom-model-user</module>
+        <module>zimg-model</module>
     </modules>
 
     <properties>

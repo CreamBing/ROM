@@ -18,6 +18,7 @@
 
     <modules>
         <module>rom-service-user</module>
+        <module>zimg-service</module>
     </modules>
 
     <properties>

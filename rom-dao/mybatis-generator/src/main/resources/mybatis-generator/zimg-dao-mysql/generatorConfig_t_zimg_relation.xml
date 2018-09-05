@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry
+            location="D:\zhaobing\dev\java\project\rom\ROM\rom-dao\mybatis-generator\src\main\resources\jdbclib\mysql-connector-java-8.0.12.jar"/>
+    <context id="MySQL" defaultModelType="flat" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressDate" value="false"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.30.128:13306/zimg" userId="root"
+                        password="123456"/>
+
+        <javaModelGenerator targetPackage="com.netposa.rom.model.zimg"
+                            targetProject="D:\zhaobing\dev\java\project\rom\ROM\rom-model\zimg-model\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="D:\zhaobing\dev\java\project\rom\ROM\rom-dao\zimg-dao-mysql\src\main\resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator targetPackage="com.netposa.rom.dao.zimg.mysql"
+                             targetProject="D:\zhaobing\dev\java\project\rom\ROM\rom-dao\zimg-dao-mysql\src\main\java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="t_zimg_relation" domainObjectName="ZimgRelationEntity">
+            <generatedKey column="id" sqlStatement="Mysql"/>
+        </table>
+
+        <!--这里用来生成没有example的简洁-->
+        <!--<table tableName="t_zimg_relation" domainObjectName="ZimgRelationEntity"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+
+        </table>-->
+
+    </context>
+</generatorConfiguration>

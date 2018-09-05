@@ -18,6 +18,7 @@
 
     <modules>
         <module>rom-ctrl-user</module>
+        <module>zimg-ctrl</module>
     </modules>
 
     <properties>

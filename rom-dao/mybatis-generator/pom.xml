@@ -3,12 +3,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>rom-dao-user</artifactId>
+    <artifactId>mybatis-generator</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>rom-dao-user</name>
-    <description>rom-dao-userfor Spring Boot</description>
+    <name>mybatis-generator</name>
+    <description>mybatis-generator for Spring Boot</description>
 
     <parent>
         <groupId>com.netposa</groupId>
@@ -35,39 +35,35 @@
 
     <dependencies>
 
-        <dependency>
-            <groupId>com.netposa</groupId>
-            <artifactId>rom-model-user</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>1.3.2</version>
-        </dependency>
 
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.7</version>
                 <configuration>
-                    <excludes>
-                        <exclude>*.properties</exclude>
-                    </excludes>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                        </manifest>
-                        <manifestEntries>
-                            <url>${project.url}</url>
-                            <build-time>${maven.build.timestamp}</build-time>
-                        </manifestEntries>
-                    </archive>
+                    <configurationFile>src\main\resources\mybatis-generator\zimg-dao-mysql\generatorConfig_t_zimg_relation.xml</configurationFile>
+                    <verbose>true</verbose>
+                    <overwrite>true</overwrite>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>Generate MyBatis Artifacts</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.mybatis.generator</groupId>
+                        <artifactId>mybatis-generator-core</artifactId>
+                        <version>1.3.7</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>

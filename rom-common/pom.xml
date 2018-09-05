@@ -19,6 +19,8 @@
     <modules>
         <module>rom-redis</module>
         <module>rom-kafka</module>
+        <module>zimg-client</module>
+        <module>http-async-client</module>
     </modules>
 
     <properties>
