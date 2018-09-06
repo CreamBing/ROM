@@ -13,6 +13,8 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.nutz.http.Request;
 import org.nutz.http.Response;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.InputStream;
@@ -31,6 +33,8 @@ import java.util.regex.Pattern;
  */
 @Data
 public class ZimgClient {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ZimgClient.class);
 
 	private String baseUrl;
 
@@ -57,7 +61,7 @@ public class ZimgClient {
             Element h1 = document.getElementsByTag("h1").get(0);
             if(h1.hasText()){
                 String h1test = h1.text();
-                if(h1test.contains(Constants.SUCCESS_FLAG)){
+                if(h1test.contains(Constants.UPLOAD_SUCCESS_FLAG)){
                     String md5 = md5(h1test);
                     if(StringUtils.isNotBlank(md5)){
                         if(StringUtils.isNotBlank(baseUrl)){
@@ -76,6 +80,7 @@ public class ZimgClient {
             }
         }
         if(isSuccess){
+            LOGGER.info("zimg[{}]上传成功",zimgInfo.getZimgName());
             return zimgInfo;
         }else {
             return null;
@@ -108,6 +113,14 @@ public class ZimgClient {
         urlParams.add(new BasicNameValuePair("md5", md5));
         urlParams.add(new BasicNameValuePair("t", "1"));
         HttpAsyncClientUtils.exeAsyncReq(deleteUrl, false, urlParams, null, deleteCallBack);
+    }
+
+    public void delete(String md5,DeleteCallBack delCallBack) throws Exception{
+        String deleteUrl = baseUrl+Constants.DELETE_URL;
+        List<BasicNameValuePair> urlParams = new ArrayList<>();
+        urlParams.add(new BasicNameValuePair("md5", md5));
+        urlParams.add(new BasicNameValuePair("t", "1"));
+        HttpAsyncClientUtils.exeAsyncReq(deleteUrl, false, urlParams, null, delCallBack);
     }
 
 

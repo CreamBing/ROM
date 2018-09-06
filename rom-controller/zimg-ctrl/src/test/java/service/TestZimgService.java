@@ -7,6 +7,7 @@ import com.netposa.rom.service.zimg.ZimgService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -14,11 +15,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 public class TestZimgService {
 
+    @Qualifier("zimgServiceMysqlImpl")
     @Autowired
     ZimgService zimgService;
 
     @Test
-    public void upload(){
+    public void upload()throws Exception{
         String img = "C:\\Users\\lenovo\\Pictures\\Camera Roll\\timg.jpg";
         ZimgFile zimgFile = zimgService.upload(img);
         System.out.println(JSON.toJSONString(zimgFile));

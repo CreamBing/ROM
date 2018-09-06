@@ -8,7 +8,7 @@ import com.netposa.rom.common.zimg.bean.ZimgFile;
  */
 public interface ZimgService {
 
-    ZimgFile upload(String file);
+    ZimgFile upload(String file) throws Exception;
 
     void delete(String md5);
 }

@@ -2,7 +2,9 @@ package com.netposa.rom.common.zimg.constants;
 
 public class Constants {
 
-    public static final String SUCCESS_FLAG = "MD5";
+    public static final String UPLOAD_SUCCESS_FLAG = "MD5";
+
+    public static final String DELETE_SUCCESS_FLAG = "Successful";
 
     public static final String MAD5_PATTERN = "^MD5: ([0-9a-f]{32})$";
 

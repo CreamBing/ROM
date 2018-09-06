@@ -4,7 +4,9 @@ import com.netposa.rom.model.zimg.ZimgRelationEntity;
 import com.netposa.rom.model.zimg.ZimgRelationEntityExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface ZimgRelationEntityMapper {
     long countByExample(ZimgRelationEntityExample example);
 
