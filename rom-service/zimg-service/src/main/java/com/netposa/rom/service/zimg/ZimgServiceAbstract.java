@@ -20,8 +20,6 @@ public abstract class ZimgServiceAbstract implements ZimgService{
 
     protected abstract void deleteFromDb(String md5);
 
-    protected abstract DeleteCallBack deleteCallBack();
-
     @Override
     public ZimgFile upload(String file) throws Exception{
         ZimgFile zimgFile =  zimgClient.upload(file);
@@ -35,10 +33,10 @@ public abstract class ZimgServiceAbstract implements ZimgService{
     @Override
     public void delete(String md5) {
         try {
-            //zimg上删除图片之后的回调方法
-            DeleteCallBack deleteCallBack = deleteCallBack();
-            zimgClient.delete(md5,deleteCallBack);
-//            deleteFromDb(md5);
+            //zimg上删除图片之后的回调方法,这里由于在回调中调用zimgMysqlService.deleteByMD5一直有问题
+            //这里虽然还是用的异步的，但是zimg上删除和mysql删除没有关系，没有做到数据一致性
+            zimgClient.delete(md5);
+            deleteFromDb(md5);
         }catch (Exception e){
             LOGGER.error("zimg 刪除[{}]图片失败:{}",md5,e.getMessage());
         }

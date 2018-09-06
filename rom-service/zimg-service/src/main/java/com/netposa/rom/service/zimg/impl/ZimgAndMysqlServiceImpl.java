@@ -44,10 +44,4 @@ public class ZimgAndMysqlServiceImpl extends ZimgServiceAbstract {
         zimgMysqlService.deleteByMD5(md5);
     }
 
-    @Override
-    protected DeleteCallBack deleteCallBack() {
-        return new DeleteFromMysqlCallBack();
-    }
-
-
 }
