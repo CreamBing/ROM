@@ -101,10 +101,7 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.netposa.rom.model.zimg.ZimgRelationEntity">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into t_zimg_relation (id, md5, url, 
+    insert into t_zimg_relation (id, md5, url,
       create_time, update_time, has_delete
       )
     values (#{id,jdbcType=INTEGER}, #{md5,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
@@ -112,9 +109,6 @@
       )
   </insert>
   <insert id="insertSelective" parameterType="com.netposa.rom.model.zimg.ZimgRelationEntity">
-    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
     insert into t_zimg_relation
     <trim prefix="(" suffix=")" suffixOverrides=",">
       id,

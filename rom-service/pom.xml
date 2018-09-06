@@ -20,6 +20,7 @@
         <module>rom-service-user</module>
         <module>zimg-service</module>
         <module>seimicrawler</module>
+        <module>scan-local-dir</module>
     </modules>
 
     <properties>

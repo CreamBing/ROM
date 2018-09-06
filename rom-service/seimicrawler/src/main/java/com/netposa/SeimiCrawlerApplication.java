@@ -1,4 +1,4 @@
-package com.netposa.rom.service.seimicrawler;
+package com.netposa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

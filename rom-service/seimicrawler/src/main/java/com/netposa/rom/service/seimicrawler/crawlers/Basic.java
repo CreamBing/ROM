@@ -1,13 +1,11 @@
 package com.netposa.rom.service.seimicrawler.crawlers;
 
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 import cn.wanghaomiao.seimi.annotation.Crawler;
 import cn.wanghaomiao.seimi.def.BaseSeimiCrawler;
 import cn.wanghaomiao.seimi.struct.Request;
 import cn.wanghaomiao.seimi.struct.Response;
 import com.netposa.rom.service.seimicrawler.thread.ThreadDownloadImg;
-import oracle.jrockit.jfr.jdkevents.ThrowableTracer;
 import org.seimicrawler.xpath.JXDocument;
 
 import java.util.ArrayList;
