@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 
-@Service("zimgServiceMysqlImpl")
+@Service("zimgAndMysqlServiceImpl")
 @Transactional(readOnly = true)
 public class ZimgAndMysqlServiceImpl extends ZimgServiceAbstract {
 
