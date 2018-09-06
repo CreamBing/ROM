@@ -19,6 +19,7 @@
     <modules>
         <module>rom-service-user</module>
         <module>zimg-service</module>
+        <module>seimicrawler</module>
     </modules>
 
     <properties>
