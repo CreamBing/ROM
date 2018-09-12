@@ -34,11 +34,19 @@
     </repositories>
 
     <dependencies>
-
+        <!--start springboot-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
-            <version>2.0.4.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -55,7 +63,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-logging</artifactId>
-            <version>2.0.0.RELEASE</version>
         </dependency>
 
         <dependency>
@@ -71,20 +78,44 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
+                <goals>
+                    <goal>jar</goal>
+                </goals>
                 <configuration>
-                    <excludes>
-                        <exclude>*.properties</exclude>
-                    </excludes>
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>com.netposa.JavaCvApplication</mainClass>
                         </manifest>
-                        <manifestEntries>
-                            <url>${project.url}</url>
-                            <build-time>${maven.build.timestamp}</build-time>
-                        </manifestEntries>
                     </archive>
+                    <excludes>
+                        <exclude>*.properties</exclude>
+                        <exclude>*.yml</exclude>
+                        <exclude>*.md</exclude>
+                        <exclude>*.xml</exclude>
+                    </excludes>
                 </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <!-- not append assembly id in release file name -->
+                    <finalName>javacv</finalName>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <descriptors>
+                        <descriptor>src/main/build/package.xml</descriptor>
+                    </descriptors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

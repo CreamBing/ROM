@@ -45,7 +45,7 @@ public class FaceApplet extends Applet implements Runnable {
     public void init() {
         try {
             // Load the classifier file from Java resources.
-            String classiferName = "haarcascade_frontalface_alt.xml";
+            String classiferName = "conf/haarcascade_frontalface_alt.xml";
             File classifierFile = Loader.extractResource(classiferName, null, "classifier", ".xml");
             if (classifierFile == null || classifierFile.length() <= 0) {
                 throw new IOException("Could not extract \"" + classiferName + "\" from Java resources.");

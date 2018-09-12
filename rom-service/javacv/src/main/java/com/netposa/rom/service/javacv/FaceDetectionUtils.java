@@ -31,7 +31,7 @@ public class FaceDetectionUtils {
     private static CascadeClassifier classifier1 = null;
     private static CvMemStorage storage = null;
     private static Exception exception = null;
-    private static String classiferName = "/haarcascade_frontalface_alt.xml";
+    private static String classiferName = "/conf/haarcascade_frontalface_alt.xml";
 
     static {
         try {
@@ -145,7 +145,7 @@ public class FaceDetectionUtils {
     }
 
 
-    public static ImageFace faceDetectionWithoutPrint(IplImage grabbedImage1) {
+    public static ImageFace<Long> faceDetectionWithoutPrint(IplImage grabbedImage1) {
         Mat grabbedImage = new Mat(grabbedImage1);
         Mat grayImage = new Mat(grabbedImage1.height(), grabbedImage1.width(), CV_8UC1);
         cvtColor(grabbedImage, grayImage, CV_BGR2GRAY);
@@ -154,7 +154,6 @@ public class FaceDetectionUtils {
                 1.1, 3, CV_HAAR_FIND_BIGGEST_OBJECT | CV_HAAR_DO_ROUGH_SEARCH, null, null);
         List<CvRect> faceRect = new ArrayList<>();
         ImageFace<Long> imageFace = new ImageFace<>();
-        Point hatPoints = new Point(3);
         if (faces != null) {
             long  total = faces.size();
             if (total > 0) {
@@ -176,7 +175,10 @@ public class FaceDetectionUtils {
 
 
     public static void main(String[] args) {
-        String fileName = "C:\\Users\\bing\\Pictures\\Camera Roll\\zb\\63175000.jpg";
+        //single face
+//        String fileName = "C:\\Users\\bing\\Pictures\\Camera Roll\\singleface\\527041000.jpg";
+        //faces
+        String fileName = "C:\\Users\\bing\\Pictures\\Camera Roll\\faces\\459314000.jpg";
         IplImage testImage = cvLoadImage(fileName);
         ImageFace imageFace = faceDetection1(testImage);
         if (imageFace != null) {

@@ -45,7 +45,7 @@
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
                 <version>1.3.7</version>
                 <configuration>
-                    <configurationFile>src\main\resources\mybatis-generator\zimg-dao-mysql\generatorConfig_t_zimg_relation.xml</configurationFile>
+                    <configurationFile>src\main\resources\mybatis-generator\zimg-dao-mysql\generatorConfig_t_face_train.xml</configurationFile>
                     <verbose>true</verbose>
                     <overwrite>true</overwrite>
                 </configuration>
