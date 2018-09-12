@@ -1,21 +1,17 @@
 package com.netposa.rom.service.javacv;
 
-import org.bytedeco.javacpp.*;
-import org.bytedeco.javacv.*;
-import org.opencv.imgcodecs.Imgcodecs;
+import org.bytedeco.javacpp.Pointer;
+import org.bytedeco.javacpp.avformat;
+import org.bytedeco.javacpp.opencv_core;
+import org.bytedeco.javacpp.opencv_imgcodecs;
+import org.bytedeco.javacv.CanvasFrame;
+import org.bytedeco.javacv.FFmpegFrameGrabber;
+import org.bytedeco.javacv.Frame;
+import org.bytedeco.javacv.OpenCVFrameConverter;
 
 import javax.swing.*;
-import java.io.File;
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
-
-import static org.bytedeco.javacpp.helper.opencv_objdetect.cvHaarDetectObjects;
-import static org.bytedeco.javacpp.opencv_core.cvClearMemStorage;
-import static org.bytedeco.javacpp.opencv_core.cvLoad;
-import static org.bytedeco.javacpp.opencv_imgproc.*;
-import static org.bytedeco.javacpp.opencv_objdetect.CV_HAAR_DO_ROUGH_SEARCH;
-import static org.bytedeco.javacpp.opencv_objdetect.CV_HAAR_FIND_BIGGEST_OBJECT;
 
 /**
  * <p>Title: FFmpegStreamingTimeout</p>
@@ -68,8 +64,8 @@ public class FFmpegStreamingTimeout {
     private static final int TIMEOUT = 10; // In seconds.
 
     public static void main(String[] args) {
-        testShow();
-//        testRtsp();
+//        testShow();
+        testRtsp();
 //        rtspStreamingTest();
 //        testWithCallback(); // This is not working properly. It's just for test.
     }
@@ -173,16 +169,18 @@ public class FFmpegStreamingTimeout {
                 }
                 System.out.println(i + ":" + grabber.getFormat() + ":" + grabber.getFrameNumber());
                 opencv_core.Mat mat = converter.convertToMat(frame);
-                opencv_imgcodecs.imwrite("C:\\Users\\bing\\Pictures\\Camera Roll\\zb\\" + grabber.getTimestamp() + ".jpg", mat);
-                Thread.sleep(1000);
-                System.out.println("成功截取");
+                if (FaceDetectionUtils.faceDetectionWithoutPrint(conveter.convertToIplImage(frame)) != null) {
+                    opencv_imgcodecs.imwrite("C:\\Users\\bing\\Pictures\\Camera Roll\\zb\\" + grabber.getTimestamp() + ".jpg", mat);
+                    Thread.sleep(1000);
+                    System.out.println("成功截取");
+                }
             }
         } catch (Exception e) {
             System.out.println("exception: " + e);
         }
     }
 
-//    private static void ee() throws Exception{
+    //    private static void ee() throws Exception{
 //        opencv_objdetect.CvHaarClassifierCascade classifier = null;
 //        opencv_core.CvMemStorage storage = null;
 //        opencv_core.IplImage grabbedImage = null, grayImage = null, smallImage = null;
