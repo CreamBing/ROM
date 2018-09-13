@@ -22,6 +22,7 @@
         <module>seimicrawler</module>
         <module>scan-local-dir</module>
         <module>javacv</module>
+        <module>job</module>
     </modules>
 
     <properties>
