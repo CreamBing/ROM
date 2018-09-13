@@ -14,6 +14,12 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="label" jdbcType="INTEGER" property="label" />
     <result column="train_time" jdbcType="TIMESTAMP" property="trainTime" />
+    <result column="forecast_name" jdbcType="VARCHAR" property="forecastName" />
+    <result column="forecast_time" jdbcType="TIMESTAMP" property="forecastTime" />
+    <result column="forecast_result" jdbcType="BIT" property="forecastResult" />
+    <result column="has_deleted" jdbcType="BIT" property="hasDeleted" />
+    <result column="has_recognized" jdbcType="BIT" property="hasRecognized" />
+    <result column="recognize_time" jdbcType="TIMESTAMP" property="recognizeTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -74,7 +80,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, md5, x, y, w, h, create_time, update_time, has_trained, name, label, train_time
+    id, md5, x, y, w, h, create_time, update_time, has_trained, name, label, train_time, 
+    forecast_name, forecast_time, forecast_result, has_deleted, has_recognized, recognize_time
   </sql>
   <select id="selectByExample" parameterType="com.netposa.rom.model.zimg.FaceTrainEntityExample" resultMap="BaseResultMap">
     select
@@ -107,14 +114,18 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.netposa.rom.model.zimg.FaceTrainEntity">
-    insert into t_face_train (id, md5, x, y,
+    insert into t_face_train (id, md5, x, y, 
       w, h, create_time, 
       update_time, has_trained, name, 
-      label, train_time)
+      label, train_time, forecast_name, 
+      forecast_time, forecast_result, has_deleted, 
+      has_recognized, recognize_time)
     values (#{id,jdbcType=INTEGER}, #{md5,jdbcType=VARCHAR}, #{x,jdbcType=INTEGER}, #{y,jdbcType=INTEGER}, 
       #{w,jdbcType=INTEGER}, #{h,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP}, #{hasTrained,jdbcType=BIT}, #{name,jdbcType=VARCHAR}, 
-      #{label,jdbcType=INTEGER}, #{trainTime,jdbcType=TIMESTAMP})
+      #{label,jdbcType=INTEGER}, #{trainTime,jdbcType=TIMESTAMP}, #{forecastName,jdbcType=VARCHAR}, 
+      #{forecastTime,jdbcType=TIMESTAMP}, #{forecastResult,jdbcType=BIT}, #{hasDeleted,jdbcType=BIT}, 
+      #{hasRecognized,jdbcType=BIT}, #{recognizeTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.netposa.rom.model.zimg.FaceTrainEntity">
     insert into t_face_train
@@ -153,6 +164,24 @@
       <if test="trainTime != null">
         train_time,
       </if>
+      <if test="forecastName != null">
+        forecast_name,
+      </if>
+      <if test="forecastTime != null">
+        forecast_time,
+      </if>
+      <if test="forecastResult != null">
+        forecast_result,
+      </if>
+      <if test="hasDeleted != null">
+        has_deleted,
+      </if>
+      <if test="hasRecognized != null">
+        has_recognized,
+      </if>
+      <if test="recognizeTime != null">
+        recognize_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       #{id,jdbcType=INTEGER},
@@ -188,6 +217,24 @@
       </if>
       <if test="trainTime != null">
         #{trainTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="forecastName != null">
+        #{forecastName,jdbcType=VARCHAR},
+      </if>
+      <if test="forecastTime != null">
+        #{forecastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="forecastResult != null">
+        #{forecastResult,jdbcType=BIT},
+      </if>
+      <if test="hasDeleted != null">
+        #{hasDeleted,jdbcType=BIT},
+      </if>
+      <if test="hasRecognized != null">
+        #{hasRecognized,jdbcType=BIT},
+      </if>
+      <if test="recognizeTime != null">
+        #{recognizeTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -236,6 +283,24 @@
       <if test="record.trainTime != null">
         train_time = #{record.trainTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.forecastName != null">
+        forecast_name = #{record.forecastName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.forecastTime != null">
+        forecast_time = #{record.forecastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.forecastResult != null">
+        forecast_result = #{record.forecastResult,jdbcType=BIT},
+      </if>
+      <if test="record.hasDeleted != null">
+        has_deleted = #{record.hasDeleted,jdbcType=BIT},
+      </if>
+      <if test="record.hasRecognized != null">
+        has_recognized = #{record.hasRecognized,jdbcType=BIT},
+      </if>
+      <if test="record.recognizeTime != null">
+        recognize_time = #{record.recognizeTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -254,7 +319,13 @@
       has_trained = #{record.hasTrained,jdbcType=BIT},
       name = #{record.name,jdbcType=VARCHAR},
       label = #{record.label,jdbcType=INTEGER},
-      train_time = #{record.trainTime,jdbcType=TIMESTAMP}
+      train_time = #{record.trainTime,jdbcType=TIMESTAMP},
+      forecast_name = #{record.forecastName,jdbcType=VARCHAR},
+      forecast_time = #{record.forecastTime,jdbcType=TIMESTAMP},
+      forecast_result = #{record.forecastResult,jdbcType=BIT},
+      has_deleted = #{record.hasDeleted,jdbcType=BIT},
+      has_recognized = #{record.hasRecognized,jdbcType=BIT},
+      recognize_time = #{record.recognizeTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -295,6 +366,24 @@
       <if test="trainTime != null">
         train_time = #{trainTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="forecastName != null">
+        forecast_name = #{forecastName,jdbcType=VARCHAR},
+      </if>
+      <if test="forecastTime != null">
+        forecast_time = #{forecastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="forecastResult != null">
+        forecast_result = #{forecastResult,jdbcType=BIT},
+      </if>
+      <if test="hasDeleted != null">
+        has_deleted = #{hasDeleted,jdbcType=BIT},
+      </if>
+      <if test="hasRecognized != null">
+        has_recognized = #{hasRecognized,jdbcType=BIT},
+      </if>
+      <if test="recognizeTime != null">
+        recognize_time = #{recognizeTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -310,7 +399,13 @@
       has_trained = #{hasTrained,jdbcType=BIT},
       name = #{name,jdbcType=VARCHAR},
       label = #{label,jdbcType=INTEGER},
-      train_time = #{trainTime,jdbcType=TIMESTAMP}
+      train_time = #{trainTime,jdbcType=TIMESTAMP},
+      forecast_name = #{forecastName,jdbcType=VARCHAR},
+      forecast_time = #{forecastTime,jdbcType=TIMESTAMP},
+      forecast_result = #{forecastResult,jdbcType=BIT},
+      has_deleted = #{hasDeleted,jdbcType=BIT},
+      has_recognized = #{hasRecognized,jdbcType=BIT},
+      recognize_time = #{recognizeTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -4,7 +4,9 @@ import com.netposa.rom.model.zimg.FaceTrainEntity;
 import com.netposa.rom.model.zimg.FaceTrainEntityExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface FaceTrainEntityMapper {
     long countByExample(FaceTrainEntityExample example);
 

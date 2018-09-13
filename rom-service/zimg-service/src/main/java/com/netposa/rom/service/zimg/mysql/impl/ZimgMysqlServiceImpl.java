@@ -1,6 +1,8 @@
 package com.netposa.rom.service.zimg.mysql.impl;
 
+import com.netposa.rom.dao.zimg.mysql.FaceTrainEntityMapper;
 import com.netposa.rom.dao.zimg.mysql.ZimgRelationEntityMapper;
+import com.netposa.rom.model.zimg.FaceTrainEntity;
 import com.netposa.rom.model.zimg.ZimgRelationEntity;
 import com.netposa.rom.model.zimg.ZimgRelationEntityExample;
 import com.netposa.rom.service.zimg.mysql.ZimgMysqlService;
@@ -18,6 +20,9 @@ public class ZimgMysqlServiceImpl implements ZimgMysqlService {
 
     @Autowired
     ZimgRelationEntityMapper zimgRelationEntityMapper;
+
+    @Autowired
+    FaceTrainEntityMapper faceTrainEntityMapper;
 
 
     @Override
@@ -41,5 +46,11 @@ public class ZimgMysqlServiceImpl implements ZimgMysqlService {
         int result = zimgRelationEntityMapper.deleteByExample(zimgRelationEntityExample);
         LOGGER.info("[{}]mysql数据库删除成功",md5);
         return result;
+    }
+
+    @Override
+    @Transactional(readOnly = false,rollbackFor = Exception.class)
+    public int insertFace(FaceTrainEntity entity) {
+        return faceTrainEntityMapper.insert(entity);
     }
 }

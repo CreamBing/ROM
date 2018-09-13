@@ -2,11 +2,15 @@ package com.netposa.rom.service.zimg;
 
 import com.netposa.rom.common.zimg.ZimgClient;
 import com.netposa.rom.common.zimg.bean.ZimgFile;
-import com.netposa.rom.common.zimg.httpasyncclient.DeleteCallBack;
 import com.netposa.rom.service.zimg.exception.UploadFailException;
+import com.netposa.rom.service.zimg.utils.FaceDetectionUtils;
+import com.netposa.rom.service.zimg.utils.ImageFace;
+import org.bytedeco.javacpp.opencv_core;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import static org.bytedeco.javacpp.opencv_imgcodecs.cvLoadImage;
 
 public abstract class ZimgServiceAbstract implements ZimgService{
 
@@ -19,6 +23,9 @@ public abstract class ZimgServiceAbstract implements ZimgService{
     protected abstract void insertDb(ZimgFile zimgFile);
 
     protected abstract void deleteFromDb(String md5);
+
+    public abstract void insertFaceDb(ImageFace<Long> imageFace,String md5);
+
 
     @Override
     public ZimgFile upload(String file) throws Exception{
@@ -40,5 +47,10 @@ public abstract class ZimgServiceAbstract implements ZimgService{
         }catch (Exception e){
             LOGGER.error("zimg 刪除[{}]图片失败:{}",md5,e.getMessage());
         }
+    }
+
+    public ImageFace<Long> getFace(String file){
+        opencv_core.IplImage testImage = cvLoadImage(file);
+        return FaceDetectionUtils.faceDetectionWithoutPrint(testImage);
     }
 }

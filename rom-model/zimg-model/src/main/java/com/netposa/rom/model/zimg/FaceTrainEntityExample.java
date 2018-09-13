@@ -844,6 +844,376 @@ public class FaceTrainEntityExample {
             addCriterion("train_time not between", value1, value2, "trainTime");
             return (Criteria) this;
         }
+
+        public Criteria andForecastNameIsNull() {
+            addCriterion("forecast_name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastNameIsNotNull() {
+            addCriterion("forecast_name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastNameEqualTo(String value) {
+            addCriterion("forecast_name =", value, "forecastName");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastNameNotEqualTo(String value) {
+            addCriterion("forecast_name <>", value, "forecastName");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastNameGreaterThan(String value) {
+            addCriterion("forecast_name >", value, "forecastName");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastNameGreaterThanOrEqualTo(String value) {
+            addCriterion("forecast_name >=", value, "forecastName");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastNameLessThan(String value) {
+            addCriterion("forecast_name <", value, "forecastName");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastNameLessThanOrEqualTo(String value) {
+            addCriterion("forecast_name <=", value, "forecastName");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastNameLike(String value) {
+            addCriterion("forecast_name like", value, "forecastName");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastNameNotLike(String value) {
+            addCriterion("forecast_name not like", value, "forecastName");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastNameIn(List<String> values) {
+            addCriterion("forecast_name in", values, "forecastName");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastNameNotIn(List<String> values) {
+            addCriterion("forecast_name not in", values, "forecastName");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastNameBetween(String value1, String value2) {
+            addCriterion("forecast_name between", value1, value2, "forecastName");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastNameNotBetween(String value1, String value2) {
+            addCriterion("forecast_name not between", value1, value2, "forecastName");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastTimeIsNull() {
+            addCriterion("forecast_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastTimeIsNotNull() {
+            addCriterion("forecast_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastTimeEqualTo(Date value) {
+            addCriterion("forecast_time =", value, "forecastTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastTimeNotEqualTo(Date value) {
+            addCriterion("forecast_time <>", value, "forecastTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastTimeGreaterThan(Date value) {
+            addCriterion("forecast_time >", value, "forecastTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("forecast_time >=", value, "forecastTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastTimeLessThan(Date value) {
+            addCriterion("forecast_time <", value, "forecastTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastTimeLessThanOrEqualTo(Date value) {
+            addCriterion("forecast_time <=", value, "forecastTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastTimeIn(List<Date> values) {
+            addCriterion("forecast_time in", values, "forecastTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastTimeNotIn(List<Date> values) {
+            addCriterion("forecast_time not in", values, "forecastTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastTimeBetween(Date value1, Date value2) {
+            addCriterion("forecast_time between", value1, value2, "forecastTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastTimeNotBetween(Date value1, Date value2) {
+            addCriterion("forecast_time not between", value1, value2, "forecastTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastResultIsNull() {
+            addCriterion("forecast_result is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastResultIsNotNull() {
+            addCriterion("forecast_result is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastResultEqualTo(Boolean value) {
+            addCriterion("forecast_result =", value, "forecastResult");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastResultNotEqualTo(Boolean value) {
+            addCriterion("forecast_result <>", value, "forecastResult");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastResultGreaterThan(Boolean value) {
+            addCriterion("forecast_result >", value, "forecastResult");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastResultGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("forecast_result >=", value, "forecastResult");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastResultLessThan(Boolean value) {
+            addCriterion("forecast_result <", value, "forecastResult");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastResultLessThanOrEqualTo(Boolean value) {
+            addCriterion("forecast_result <=", value, "forecastResult");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastResultIn(List<Boolean> values) {
+            addCriterion("forecast_result in", values, "forecastResult");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastResultNotIn(List<Boolean> values) {
+            addCriterion("forecast_result not in", values, "forecastResult");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastResultBetween(Boolean value1, Boolean value2) {
+            addCriterion("forecast_result between", value1, value2, "forecastResult");
+            return (Criteria) this;
+        }
+
+        public Criteria andForecastResultNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("forecast_result not between", value1, value2, "forecastResult");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasDeletedIsNull() {
+            addCriterion("has_deleted is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasDeletedIsNotNull() {
+            addCriterion("has_deleted is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasDeletedEqualTo(Boolean value) {
+            addCriterion("has_deleted =", value, "hasDeleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasDeletedNotEqualTo(Boolean value) {
+            addCriterion("has_deleted <>", value, "hasDeleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasDeletedGreaterThan(Boolean value) {
+            addCriterion("has_deleted >", value, "hasDeleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasDeletedGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("has_deleted >=", value, "hasDeleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasDeletedLessThan(Boolean value) {
+            addCriterion("has_deleted <", value, "hasDeleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasDeletedLessThanOrEqualTo(Boolean value) {
+            addCriterion("has_deleted <=", value, "hasDeleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasDeletedIn(List<Boolean> values) {
+            addCriterion("has_deleted in", values, "hasDeleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasDeletedNotIn(List<Boolean> values) {
+            addCriterion("has_deleted not in", values, "hasDeleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasDeletedBetween(Boolean value1, Boolean value2) {
+            addCriterion("has_deleted between", value1, value2, "hasDeleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasDeletedNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("has_deleted not between", value1, value2, "hasDeleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasRecognizedIsNull() {
+            addCriterion("has_recognized is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasRecognizedIsNotNull() {
+            addCriterion("has_recognized is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasRecognizedEqualTo(Boolean value) {
+            addCriterion("has_recognized =", value, "hasRecognized");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasRecognizedNotEqualTo(Boolean value) {
+            addCriterion("has_recognized <>", value, "hasRecognized");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasRecognizedGreaterThan(Boolean value) {
+            addCriterion("has_recognized >", value, "hasRecognized");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasRecognizedGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("has_recognized >=", value, "hasRecognized");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasRecognizedLessThan(Boolean value) {
+            addCriterion("has_recognized <", value, "hasRecognized");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasRecognizedLessThanOrEqualTo(Boolean value) {
+            addCriterion("has_recognized <=", value, "hasRecognized");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasRecognizedIn(List<Boolean> values) {
+            addCriterion("has_recognized in", values, "hasRecognized");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasRecognizedNotIn(List<Boolean> values) {
+            addCriterion("has_recognized not in", values, "hasRecognized");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasRecognizedBetween(Boolean value1, Boolean value2) {
+            addCriterion("has_recognized between", value1, value2, "hasRecognized");
+            return (Criteria) this;
+        }
+
+        public Criteria andHasRecognizedNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("has_recognized not between", value1, value2, "hasRecognized");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecognizeTimeIsNull() {
+            addCriterion("recognize_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecognizeTimeIsNotNull() {
+            addCriterion("recognize_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecognizeTimeEqualTo(Date value) {
+            addCriterion("recognize_time =", value, "recognizeTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecognizeTimeNotEqualTo(Date value) {
+            addCriterion("recognize_time <>", value, "recognizeTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecognizeTimeGreaterThan(Date value) {
+            addCriterion("recognize_time >", value, "recognizeTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecognizeTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("recognize_time >=", value, "recognizeTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecognizeTimeLessThan(Date value) {
+            addCriterion("recognize_time <", value, "recognizeTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecognizeTimeLessThanOrEqualTo(Date value) {
+            addCriterion("recognize_time <=", value, "recognizeTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecognizeTimeIn(List<Date> values) {
+            addCriterion("recognize_time in", values, "recognizeTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecognizeTimeNotIn(List<Date> values) {
+            addCriterion("recognize_time not in", values, "recognizeTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecognizeTimeBetween(Date value1, Date value2) {
+            addCriterion("recognize_time between", value1, value2, "recognizeTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecognizeTimeNotBetween(Date value1, Date value2) {
+            addCriterion("recognize_time not between", value1, value2, "recognizeTime");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

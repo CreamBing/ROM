@@ -1,4 +1,4 @@
-package com.netposa.rom.service.javacv;
+package com.netposa.rom.service.zimg.utils;
 
 
 import org.bytedeco.javacpp.Loader;
@@ -9,10 +9,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.bytedeco.javacpp.helper.opencv_objdetect.cvHaarDetectObjects;
 import static org.bytedeco.javacpp.opencv_core.*;
-import static org.bytedeco.javacpp.opencv_highgui.destroyAllWindows;
-import static org.bytedeco.javacpp.opencv_highgui.imshow;
-import static org.bytedeco.javacpp.opencv_highgui.waitKey;
+import static org.bytedeco.javacpp.opencv_highgui.*;
 import static org.bytedeco.javacpp.opencv_imgcodecs.cvLoadImage;
 import static org.bytedeco.javacpp.opencv_imgproc.*;
 import static org.bytedeco.javacpp.opencv_objdetect.*;
@@ -86,7 +85,7 @@ public class FaceDetectionUtils {
         }
     }
 
-    public static ImageFace faceDetection1(IplImage grabbedImage1) {
+    public static ImageFace<Long> faceDetection1(IplImage grabbedImage1) {
         Mat grabbedImage = new Mat(grabbedImage1);
         Mat grayImage = new Mat(grabbedImage1.height(), grabbedImage1.width(), CV_8UC1);
         cvtColor(grabbedImage, grayImage, CV_BGR2GRAY);
@@ -178,8 +177,7 @@ public class FaceDetectionUtils {
         //single face
 //        String fileName = "C:\\Users\\bing\\Pictures\\Camera Roll\\singleface\\527041000.jpg";
         //faces
-//        String fileName = "C:\\Users\\bing\\Pictures\\Camera Roll\\faces\\459314000.jpg";
-        String fileName = "C:\\Users\\bing\\Pictures\\Camera Roll\\singlefacetest\\ok\\841595000.jpg";
+        String fileName = "C:\\Users\\bing\\Pictures\\Camera Roll\\faces\\459314000.jpg";
         IplImage testImage = cvLoadImage(fileName);
         ImageFace imageFace = faceDetection1(testImage);
         if (imageFace != null) {

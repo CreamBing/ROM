@@ -27,6 +27,18 @@ public class FaceTrainEntity {
 
     private Date trainTime;
 
+    private String forecastName;
+
+    private Date forecastTime;
+
+    private Boolean forecastResult;
+
+    private Boolean hasDeleted;
+
+    private Boolean hasRecognized;
+
+    private Date recognizeTime;
+
     public Integer getId() {
         return id;
     }
@@ -121,5 +133,53 @@ public class FaceTrainEntity {
 
     public void setTrainTime(Date trainTime) {
         this.trainTime = trainTime;
+    }
+
+    public String getForecastName() {
+        return forecastName;
+    }
+
+    public void setForecastName(String forecastName) {
+        this.forecastName = forecastName == null ? null : forecastName.trim();
+    }
+
+    public Date getForecastTime() {
+        return forecastTime;
+    }
+
+    public void setForecastTime(Date forecastTime) {
+        this.forecastTime = forecastTime;
+    }
+
+    public Boolean getForecastResult() {
+        return forecastResult;
+    }
+
+    public void setForecastResult(Boolean forecastResult) {
+        this.forecastResult = forecastResult;
+    }
+
+    public Boolean getHasDeleted() {
+        return hasDeleted;
+    }
+
+    public void setHasDeleted(Boolean hasDeleted) {
+        this.hasDeleted = hasDeleted;
+    }
+
+    public Boolean getHasRecognized() {
+        return hasRecognized;
+    }
+
+    public void setHasRecognized(Boolean hasRecognized) {
+        this.hasRecognized = hasRecognized;
+    }
+
+    public Date getRecognizeTime() {
+        return recognizeTime;
+    }
+
+    public void setRecognizeTime(Date recognizeTime) {
+        this.recognizeTime = recognizeTime;
     }
 }
