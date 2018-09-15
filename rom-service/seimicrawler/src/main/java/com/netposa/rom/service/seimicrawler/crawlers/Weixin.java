@@ -4,9 +4,11 @@ import cn.wanghaomiao.seimi.annotation.Crawler;
 import cn.wanghaomiao.seimi.def.BaseSeimiCrawler;
 import cn.wanghaomiao.seimi.struct.Response;
 import com.netposa.rom.service.seimicrawler.thread.ThreadDownloadImg;
+import org.apache.commons.lang3.StringUtils;
 import org.seimicrawler.xpath.JXDocument;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>Title: Weixin</p>
@@ -33,8 +35,9 @@ public class Weixin extends BaseSeimiCrawler {
         JXDocument doc = response.document();
         try {
             List<Object> imgs = doc.sel("//img/@data-src");
-            for (Object o : imgs) {
-                System.out.println(o.toString());
+            List<Object> imgss =  imgs.stream().filter(e -> StringUtils.isNotBlank(e.toString())).collect(Collectors.toList());
+            System.out.println(imgss.size());
+            for (Object o : imgss) {
                 download(o.toString());
             }
         } catch (Exception e) {
@@ -53,6 +56,12 @@ public class Weixin extends BaseSeimiCrawler {
     private void download(String url) {
         Thread thread = new Thread(new ThreadDownloadImg(url));
         thread.start();
+        try {
+            //防止爬的过快被封
+            Thread.sleep(1000);
+        } catch (InterruptedException e1) {
+            e1.printStackTrace();
+        }
     }
 
 }
