@@ -1,26 +1,13 @@
 package com.netposa.rom.service.seimicrawler.utils;
 
-import javax.net.ssl.SSLSession;
-import java.io.BufferedInputStream;
-import java.io.IOException;
-
-
+import javax.net.ssl.*;
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
-
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
 /**
  * <p>Title: FileUrlConvertUtils</p>
  * <p>Description: </p>
